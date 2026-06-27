@@ -1,15 +1,5 @@
 import React from 'react';
 import { Card } from './Card.jsx';
-import { StackCard } from './StackCard.jsx';
-
-// Use the real skincare StackCard for card-kind cells; abstract Card for
-// structural kinds (hero, sticky, bg, pinned).
-function CellCard({ cell, meta, compact, scale, isMobile }) {
-  if (cell.kind === 'card' || cell.kind === 'hero') {
-    return <StackCard cell={cell} isMobile={isMobile} scale={scale} />;
-  }
-  return <Card cell={cell} meta={meta} compact={compact} scale={scale} />;
-}
 
 const GAP = 14;
 const PAD = 16;
@@ -45,7 +35,7 @@ function TitleBar({ titleBar, scale = 1 }) {
  * Renders a layout plan inside a scrollable area.
  * Plans come from planDesktop() (desktop) or a mobile strategy.
  */
-export function StickyScene({ plan, scale = 1, isMobile = false }) {
+export function StickyScene({ plan, scale = 1 }) {
   if (!plan) return null;
 
   if (plan.renderMode === 'flow') {
@@ -55,7 +45,7 @@ export function StickyScene({ plan, scale = 1, isMobile = false }) {
         <TitleBar titleBar={plan.titleBar} scale={scale} />
         {plan.cells.map((c) => (
           <div key={c.id} style={{ height: c.heightPx, minHeight: c.heightPx }}>
-            <CellCard cell={c} meta={c.meta} compact scale={scale} isMobile={isMobile} />
+            <Card cell={c} meta={c.meta} compact scale={scale} />
           </div>
         ))}
       </div>
@@ -77,7 +67,7 @@ export function StickyScene({ plan, scale = 1, isMobile = false }) {
               marginBottom: GAP,
             }}
           >
-            <CellCard cell={c} meta={c.meta} scale={scale} isMobile={isMobile} />
+            <Card cell={c} meta={c.meta} scale={scale} />
           </div>
         ))}
         <div style={{ height: plan.frameH * 0.4 }} />
@@ -113,7 +103,7 @@ export function StickyScene({ plan, scale = 1, isMobile = false }) {
                   marginTop: c.marginTopPx,
                 }}
               >
-                <CellCard cell={c} meta={c.meta} scale={scale} isMobile={isMobile} />
+                <Card cell={c} meta={c.meta} scale={scale} />
               </div>
             );
           })}
@@ -138,7 +128,7 @@ export function StickyScene({ plan, scale = 1, isMobile = false }) {
             width: '100%',
             zIndex: 0,
           }}>
-            <CellCard cell={bg} meta={bg.meta} scale={scale} isMobile={isMobile} />
+            <Card cell={bg} meta={bg.meta} scale={scale} />
           </div>
         )}
         <div style={{
@@ -156,7 +146,7 @@ export function StickyScene({ plan, scale = 1, isMobile = false }) {
               width: '78%',
               height: c.heightPx,
             }}>
-              <CellCard cell={c} meta={c.meta} scale={scale} isMobile={isMobile} />
+              <Card cell={c} meta={c.meta} scale={scale} />
             </div>
           ))}
         </div>
@@ -179,15 +169,15 @@ export function StickyScene({ plan, scale = 1, isMobile = false }) {
             zIndex: 40,
             marginBottom: GAP,
           }}>
-            <CellCard cell={header} meta={header.meta} scale={scale} isMobile={isMobile} />
+            <Card cell={header} meta={header.meta} scale={scale} />
           </div>
         )}
         <div style={{ display: 'flex', flexDirection: 'column', gap: GAP }}>
           {rest.map((c) => (
             <div key={c.id} style={{ height: c.heightPx }}>
-            <CellCard cell={c} meta={c.meta} scale={scale} isMobile={isMobile} />
-          </div>
-        ))}
+              <Card cell={c} meta={c.meta} scale={scale} />
+            </div>
+          ))}
         </div>
       </div>
     );
@@ -207,7 +197,7 @@ export function StickyScene({ plan, scale = 1, isMobile = false }) {
             zIndex: 50,
             marginBottom: 8,
           }}>
-            <CellCard cell={pinned} meta={pinned.meta} compact scale={scale} isMobile={isMobile} />
+            <Card cell={pinned} meta={pinned.meta} compact scale={scale} />
           </div>
         )}
         <div style={{ display: 'flex', flexDirection: 'column', gap: GAP }}>
@@ -216,9 +206,9 @@ export function StickyScene({ plan, scale = 1, isMobile = false }) {
               marginTop: c.marginTopPx,
               height: c.heightPx,
             }}>
-              <CellCard cell={c} meta={c.meta} scale={scale} isMobile={isMobile} />
-          </div>
-        ))}
+              <Card cell={c} meta={c.meta} scale={scale} />
+            </div>
+          ))}
         </div>
       </div>
     );
@@ -251,7 +241,7 @@ export function StickyScene({ plan, scale = 1, isMobile = false }) {
               marginTop: c.marginTopPx,
             }}
           >
-            <CellCard cell={c} meta={c.meta} scale={scale} isMobile={isMobile} />
+            <Card cell={c} meta={c.meta} scale={scale} />
           </div>
         ))}
       </div>

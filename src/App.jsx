@@ -58,7 +58,7 @@ function MobileStrategyFrame({ gen, strategy }) {
         innerH={MOBILE_VP.height}
         badge={<ComplexityDots level={strategy.complexity} />}
       >
-        <StickyScene plan={plan} scale={0.82} />
+        <StickyScene plan={plan} scale={0.82} isMobile />
       </FrameShell>
       <div style={{
         width: MOBILE_VP.width, padding: 12, borderRadius: 12,
@@ -110,7 +110,7 @@ export default function App() {
           <div style={{
             width: 10, height: 10, borderRadius: 3, background: tokens.accent,
           }} />
-          <span style={{ fontSize: 14, fontWeight: 700 }}>Sticky Playground</span>
+          <span style={{ fontSize: 14, fontWeight: 700 }}>Sticky Compare</span>
           <span style={{ fontSize: 12, color: tokens.text3 }}>desktop → mobile examination</span>
         </div>
         <div style={{ fontSize: 12, color: tokens.text2, fontWeight: 500 }}>{summary}</div>

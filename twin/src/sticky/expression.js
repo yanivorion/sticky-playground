@@ -87,8 +87,8 @@ export function defaultExpression() {
     stickySide: 'left',     // 'left' | 'right'     (sideBySide)
     responsive: 'fullHeight',
     stickyType: 'top',
-    offsetValue: 60,
-    offsetUnit: 'px',
+    offsetValue: 0,
+    offsetUnit: 'vh',
   };
 }
 
